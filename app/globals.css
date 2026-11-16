@@ -101,6 +101,8 @@
     @apply border-border outline-ring/50;
   }
   html {
+    /* Brand site is light-only; keep native UI (scrollbars, inputs) light too */
+    color-scheme: light;
     background-color: var(--background);
     /* Sleek glassy gradient: white blended with soft tints of the brand olive */
     background:
