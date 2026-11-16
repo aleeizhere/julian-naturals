@@ -4,12 +4,11 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 
 import { usePointerParallax } from "@/hooks/use-pointer-parallax";
-import { EASE_OUT_EXPO, HERO_TIMELINE, LEAF_STEM_ORIGIN } from "@/lib/motion";
+import { EASE_OUT_EXPO, HERO_TIMELINE, LEAF, LEAF_STEM_ORIGIN } from "@/lib/motion";
 
-const LEAF = { src: "/leaf.png", width: 1535, height: 1024 } as const;
 
 /** Endless, gentle to-and-fro around the stem, like a light breeze. */
-function Sway({
+export function Sway({
   children,
   amount = 3,
   duration = 6,

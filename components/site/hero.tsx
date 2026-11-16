@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRightIcon } from "lucide-react";
 import { motion, type Transition } from "motion/react";
 
-import { Button } from "@/components/ui/button";
+import { RollingLinkButton } from "@/components/site/rolling-link-button";
 import { FeatureStrip } from "@/components/site/feature-strip";
 import { ImageLeaves, WindLeaf } from "@/components/site/leaves";
 import { EASE_OUT_EXPO, EASE_OUT_QUINT, HERO_TIMELINE } from "@/lib/motion";
@@ -123,16 +121,7 @@ export function Hero() {
               opacity: { delay: HERO_TIMELINE.cta, duration: 0.2 },
             }}
           >
-            <Button
-              asChild
-              size="lg"
-              className="h-14 w-full rounded-full px-9 text-[17px] font-normal shadow-[0_10px_30px_-10px_rgb(63_90_42/0.6)] sm:w-auto"
-            >
-              <Link href="#products">
-                Shop Our Products
-                <ArrowRightIcon className="size-5" strokeWidth={1.5} />
-              </Link>
-            </Button>
+            <RollingLinkButton href="/shop">Shop Our Products</RollingLinkButton>
           </motion.div>
         </div>
       </div>

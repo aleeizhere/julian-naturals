@@ -1,13 +1,15 @@
+import { FeaturedProducts } from "@/components/site/featured-products";
 import { Hero } from "@/components/site/hero";
-import { Navbar } from "@/components/site/navbar";
+import { OurProcess } from "@/components/site/our-process";
+import { OurStory } from "@/components/site/our-story";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-      </main>
+      <Hero />
+      <OurStory />
+      <OurProcess />
+      <FeaturedProducts />
     </>
   );
 }

@@ -14,5 +14,9 @@ export const HERO_TIMELINE = {
   features: 2.1,
 } as const;
 
+/** Decorative leaf artwork (kept in a non-client module so server
+ *  components can import it too). */
+export const LEAF = { src: "/leaf.png", width: 1535, height: 1024 } as const;
+
 /** Leaf PNG stem position, used as the pivot for wind sway. */
 export const LEAF_STEM_ORIGIN = "75% 92%";

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Jost, Lora } from "next/font/google";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { CartProvider } from "@/components/cart/cart-context";
 import { Background } from "@/components/site/background";
+import { Footer } from "@/components/site/footer";
 import { MotionProvider } from "@/components/site/motion-provider";
+import { Navbar } from "@/components/site/navbar";
 import "./globals.css";
 
 const jost = Jost({
@@ -28,10 +32,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${jost.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full flex flex-col overflow-x-clip">
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add
+          attributes to <body> before React hydrates. Only affects <body>'s
+          own attributes, not its children. */}
+      <body
+        suppressHydrationWarning
+        className="relative min-h-full flex flex-col overflow-x-clip"
+      >
         <MotionProvider>
-          <Background />
-          {children}
+          <CartProvider>
+            <Background />
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
         </MotionProvider>
       </body>
     </html>

@@ -116,3 +116,36 @@
     @apply text-foreground font-sans;
   }
 }
+
+/* Horizontal overflow guard (phones).
+   overflow-x must be set on <html> as well as <body>: when <html> is
+   `visible`, browsers move <body>'s overflow onto the viewport and <body>
+   itself stops clipping. Phones then grow the layout viewport to the full
+   content width (oversized animated decorations), so the page zooms/pans
+   and appears to scroll by itself. `clip` (unlike `hidden`) doesn't create a
+   scroll container, so the sticky navbar keeps working. */
+html {
+  overflow-x: clip;
+}
+
+/* Browsers without `overflow: clip` (e.g. iOS Safari < 16): fall back to
+   hidden on <html> only (it applies to the viewport). */
+@supports not (overflow: clip) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
+/* Scroll lock for dialogs (cart, mobile menu).
+   Radix's scroll lock sets `overflow: hidden` on <body>. Because <html> has
+   a non-visible overflow (the clip above), <body>'s overflow is no longer
+   applied to the viewport: <body> itself becomes a non-scrolling scroll
+   container and the sticky navbar scrolls away with the page. Lock the
+   viewport (<html>) instead and keep <body>'s normal clipping. */
+html:has(> body[data-scroll-locked]) {
+  overflow: hidden;
+}
+html body[data-scroll-locked] {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}
