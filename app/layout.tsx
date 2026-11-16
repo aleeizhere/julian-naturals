@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Jost, Lora } from "next/font/google";
 import { Background } from "@/components/site/background";
+import { MotionProvider } from "@/components/site/motion-provider";
 import "./globals.css";
 
 const jost = Jost({
@@ -27,9 +28,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${jost.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full flex flex-col overflow-x-hidden">
-        <Background />
-        {children}
+      <body className="relative min-h-full flex flex-col overflow-x-clip">
+        <MotionProvider>
+          <Background />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
