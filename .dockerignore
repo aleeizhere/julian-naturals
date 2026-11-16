@@ -1,0 +1,20 @@
+# Keep the build context small and free of local-only files.
+node_modules
+.next
+out
+.git
+.gitignore
+.claude
+.vscode
+.idea
+.DS_Store
+*.log
+npm-debug.log*
+.env*
+!.env.example
+Dockerfile
+.dockerignore
+README.md
+AGENTS.md
+CLAUDE.md
+coverage
